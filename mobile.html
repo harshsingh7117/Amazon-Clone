@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile E-commerce Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        background-color: rgb(226, 224, 224);
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      header {
+        width: 100%;
+        /* padding: 10px 4px; */
+      }
+
+      header .navbar {
+        display: flex;
+
+        align-items: center;
+        width: 100%;
+        background: #131921;
+        color: #fff;
+
+      }
+
+      header .navbar .logo {
+        width: 150px;
+        height: 65px;
+
+
+      }
+
+      .border-box:hover {
+
+        border: 2px solid #fff;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .ad-box {
+        display: flex;
+        /* justify-content: center; */
+        /* align-items: center; */
+        flex-direction: column;
+        text-transform: capitalize;
+      }
+
+      .ad-box h4 {
+        font-size: 0.85rem;
+        letter-spacing: -1px;
+      }
+
+      .ad-box h5 {
+        font-size: 0.7rem;
+      }
+
+      .icon {
+        margin-top: 8px;
+        margin-right: 5px;
+      }
+
+      .address {
+        display: flex;
+        position: relative;
+        width: 180px;
+        height: 100%;
+        padding: 5px;
+        margin: 0 10px;
+      }
+
+      .search-box {
+        display: flex;
+        border: 2px solid orange;
+        border-radius: 5px;
+        overflow: hidden;
+        width: 600px;
+      }
+
+      select {
+        border: 1px solid #fff;
+
+        padding: 5px;
+        outline: none;
+      }
+
+      .serarch-icon {
+        background-color: orange;
+        padding: 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      input {
+        padding: 10px 5px;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        width: 100%;
+      }
+
+      .language {
+        display: flex;
+        margin: 0 10px;
+        width: fit-content;
+        padding: 10px 5px;
+        position: relative;
+      }
+
+      /* // language popup box start  */
+      .language-select-box {
+        width: 230px;
+        height: auto;
+        color: #000;
+        padding: 10px 0 10px 15px;
+        background-color: #fff;
+        position: absolute;
+        top: 45px;
+        /* right: 202px; */
+        text-transform: capitalize;
+        /* display: none; */
+        z-index: 10;
+      }
+
+      /* .language:hover .language-select-box{
+    display: block;
+} */
+      .language-select-box.active {
+        display: none;
+      }
+
+      .trian {
+        position: absolute;
+        top: -35px;
+        width: 0;
+
+        left: 28px;
+
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #fff;
+      }
+
+      .language-select-box .top-lag {
+        display: flex;
+        border-bottom: 1px solid rgb(168, 167, 167);
+        padding-bottom: 10px;
+        position: relative;
+      }
+
+      .language-select-box .middle-lag {
+        border-bottom: 1px solid rgb(168, 167, 167);
+        padding: 7px 0;
+      }
+
+      .language-select-box .m-l-b {
+        margin: 10px 0;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        display: flex;
+      }
+
+      .language-select-box .m-l-b a {
+        color: rgb(0, 110, 255);
+      }
+
+      .language-select-box .circle {
+        width: 18px;
+        height: 18px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .language-select-box .circle .cir {
+        width: 60%;
+        height: 60%;
+        border-radius: 50%;
+        background-color: orange;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+      }
+
+      .language-select-box .m-l-b:hover {
+        text-decoration: underline;
+        color: orange;
+        cursor: pointer;
+      }
+
+      .language-select-box .m-l-b:hover .circle::after {
+        content: "";
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+        background-color: orange;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+
+      .language-select-box .bottom-lag a {
+        padding: 10px 0;
+        font-size: 0.8rem;
+
+        color: rgb(0, 110, 255);
+      }
+
+      .language-select-box .bottom-lag {
+        padding: 10px 0;
+        font-size: 0.8rem;
+      }
+
+      .language-select-box .bottom-lag .b-text {
+        margin-bottom: 8px;
+      }
+
+      header .navbar .language img {
+        width: 15px;
+        margin-top: 2px;
+        height: 15px;
+      }
+
+      .show-text {
+        font-weight: bold;
+        margin-left: 2px;
+      }
+
+      .down {
+        margin-top: 4px;
+        margin-left: 3px;
+      }
+
+      .sign-in {
+        padding: 5px;
+        display: flex;
+        height: 100%;
+
+        width: fit-content;
+        margin: 0 10px;
+        position: relative;
+      }
+
+      /* // sign in  popup box start  */
+      .sign-select-box {
+        width: 500px;
+        height: auto;
+        padding: 20px;
+        background-color: #fff;
+
+        position: absolute;
+        top: 45px;
+        right: -120px;
+        text-transform: capitalize;
+        color: #000;
+        /* display: none; */
+
+        z-index: 10;
+      }
+
+      /* .sign-in:hover .sign-select-box{
+    display: block;
+} */
+      .sign-select-box.active {
+        display: none;
+      }
+
+      .sign-select-box .top-part-sel {
+        width: 100%;
+        /* padding:  10px ; */
+        border-bottom: 1px solid #cecdcd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .sign-select-box .top-part-sel .trian2 {
+        position: absolute;
+        top: -28px;
+        width: 0;
+
+        right: 100px;
+
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;
+        border-bottom: 9px solid #fff;
+      }
+
+      .sign-select-box .top-part-sel button {
+        width: 200px;
+        border-radius: 5px;
+        text-transform: capitalize;
+
+        padding: 10px 40px;
+        font-size: 0.9rem;
+        border: 1px solid rgb(255, 123, 0);
+        background-color: rgb(231, 177, 0);
+        color: #000;
+
+        margin-bottom: 5px;
+      }
+
+      .sign-select-box .top-part-sel p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 0.7rem;
+      }
+
+      .sign-select-box .top-part-sel p a {
+        color: rgb(0, 110, 255);
+      }
+
+      .sign-select-box .top-part-sel p a:hover {
+        color: orange;
+      }
+
+      .sign-select-box .l-r-box-wrap {
+        display: flex;
+        padding: 10px 0;
+      }
+
+      .sign-select-box .l-r-box-wrap h3 {
+        margin-bottom: 5px;
+      }
+
+      .sign-select-box .l-r-box-wrap li {
+        list-style: none;
+        font-size: 0.9rem;
+        margin: 8px 0;
+      }
+
+      .sign-select-box .l-r-box-wrap li:hover {
+        color: orange;
+        cursor: pointer;
+      }
+
+      .sign-select-box .l-r-box-wrap .left-part-sel {
+        width: 50%;
+        border-right: 1px solid #cecdcd;
+      }
+
+      .sign-select-box .l-r-box-wrap .right-part-sel {
+        width: 50%;
+        margin-left: 40px;
+      }
+
+      .sign-in .down {
+        margin-top: 14px;
+        margin-left: 5px;
+      }
+
+      .order {
+        width: fit-content;
+
+        padding: 5px;
+      }
+
+      .cart {
+        width: fit-content;
+        display: flex;
+        margin: 0 10px;
+      }
+
+      .cart-box {
+        position: relative;
+
+        padding: 5px;
+      }
+
+      .cart-box i {
+        font-size: 2rem;
+      }
+
+      .value {
+        position: absolute;
+        top: 2px;
+        font-weight: bold;
+        left: 20px;
+        font-size: 1.3rem;
+        color: orange;
+      }
+
+      .cart h4 {
+        margin-top: 13px;
+        text-transform: capitalize;
+        font-size: 1rem;
+      }
+
+      /* second navbar style start  */
+      .second-nav {
+        background-color: #131921;
+      }
+
+      .second-nav ul {
+        display: flex;
+        list-style: none;
+        /* justify-content: center; */
+        align-items: center;
+      }
+
+      .second-nav ul li {
+        padding: 10px 3px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .second-nav ul li .logo-second-nav {
+        width: 40px;
+        height: 40px;
+      }
+
+      .second-nav ul li a {
+        color: #fff;
+        margin: 0 6px;
+        text-decoration: none;
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .second-nav ul li a .sp-1 {
+        margin-right: 5px;
+      }
+
+      .second-nav ul li a.im-logo {
+        display: flex;
+        /* justify-content: center; */
+        font-size: 1rem;
+        align-items: center;
+        margin-left: 10px;
+      }
+
+      .second-nav ul li:hover {
+        /* padding:  5px; */
+
+        border: 1px solid #fff;
+      }
+      .container {
+        padding: 10px;
+      }
+
+      .product {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .product img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      .product-info {
+        padding: 10px 0;
+      }
+
+      .product-info h2 {
+        font-size: 1.5em;
+        margin: 0;
+      }
+
+      .product-info p {
+        margin: 10px 0;
+      }
+
+      .product-info .price {
+        color: #4caf50;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+
+      .add-to-cart {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+
+      .add-to-cart:hover {
+        background-color: #45a049;
+      }
+
+      @media (min-width: 600px) {
+        .product {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .product img {
+          max-width: 150px;
+          margin-right: 20px;
+        }
+
+        .product-info {
+          flex: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!-- first part of navbar  -->
+      <nav class="navbar" id="navbar">
+        <div class="logo">
+          <img
+            src="https://w7.pngwing.com/pngs/621/196/png-transparent-e-commerce-logo-logo-e-commerce-electronic-business-ecommerce-angle-text-service.png"
+            alt=""
+          />
+        </div>
+        <div class="address border-box">
+          <div class="icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="ad-box">
+            <h5>hello</h5>
+            <h4>select your address</h4>
+          </div>
+        </div>
+        <div class="search-box">
+            <select>
+                <option value="1">1</option>
+                <option value="1">1</option>
+                <option value="1">1</option>
+                <option value="1">1</option>
+                <option value="1">1</option>
+            </select>
+            <input type="text" placeholder="search amazon.in" />
+            <div class="serarch-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+        <div class="language border-box dropdownbtn">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png"
+            alt="">
+            <div class="show-text">En</div>
+            <i class="fa-solid fa-caret-down down"></i>
+            <!-- //pop up box while hovering the mouse on the language box  -->
+            <div class="language-select-box active dropdownbox">
+                <div class="top-lag">
+                    <div class="trian">
+                        <i class="fa-solid fa-triangle"></i>
+                    </div>
+                    <div class="circle">
+                        <div class="cir"></div>
+                    </div>
+                    <h4 class="language-sel">English-En</h4>
+                </div>
+                <div class="middle-lag">
+                    <div class="m-l-b">
+                        <div class="circle"></div>
+                        <h4 class="language-sel">one</h4>
+                    </div>
+                    <div class="m-l-b">
+                        <div class="circle"></div>
+                        <h4 class="language-sel">two</h4>
+                    </div>
+                    <div class="m-l-b">
+                        <div class="circle"></div>
+                        <h4 class="language-sel">three</h4>
+                    </div>
+                    <div class="m-l-b">
+                        <div class="circle"></div>
+                        <h4 class="language-sel">four</h4>
+                    </div>
+                    <div class="m-l-b">
+                        <div class="circle"></div>
+                        <h4 class="language-sel">five</h4>
+                    </div>
+                    <div class="m-l-b">
+                        <a href="#">Learn more</a>
+                    </div>
+                </div>
+                <div class="bottom-lag">
+                    <div class="b-text">You are shopping on Amazon.in</div>
+                    <a href="#">change country / region</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="sign-in border-box dropdownbtn">
+            <div class="sign-text">
+                <h5>hello, sign in</h5>
+                <h4>Account & Lists</h4>
+            </div>
+            <i class="fa-solid fa-caret-down down"></i>
+            <!-- //popup box while hovering the mouse on sign in box   -->
+            <div class="sign-select-box active dropdownbox">
+                <div class="top-part-sel">
+                    <div class="trian2"></div>
+                    <div class="t-p-s-box">
+                        <button>sign in</button>
+                        <p>New Customer? <a href="#">start here</a></p>
+                    </div>
+                </div>
+                <div class="l-r-box-wrap">
+                    <div class="left-part-sel">
+                        <div class="l-p-s-box">
+                            <h3>your Lists</h3>
+                            <ul>
+                                <li>create a wish list</li>
+                                <li>wish from any website</li>
+                                <li>baby wishlist</li>
+                                <li>discover your style</li>
+                                <li>explore showroom</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right-part-sel">
+                        <div class="r-p-s-box">
+                            <h3>your account</h3>
+                            <ul>
+                                <li>your account</li>
+                                <li>your orders</li>
+                                <li>your wish list</li>
+                                <li>your recommendation</li>
+                                <li>your prime membership</li>
+                                <li>your prime video</li>
+                                <li>your subscribe & save items</li>
+                                <li>memberships & subscriptions</li>
+                                <li>your free amazon business account</li>
+                                <li>your seller account</li>
+                                <li>manage your content and devices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="order border-box">
+            <div class="order-box">
+                <h5>Returns</h5>
+                <h4>& Order</h4>
+            </div>
+        </div>
+        <div class="cart border-box">
+            <div class="cart-box">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="value">0</div>
+            </div>
+            <h4>cart</h4>
+        </div>
+      </nav>
+      <!-- second navbar part start -->
+      <nav class="second-nav">
+        <ul>
+            <li class="border-2"><a href="#"><i class="fa-solid fa-bars sp-1"></i>All</a>
+            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Best sellers</a></li>
+            <li><a href="mobile.html">Mobiles</a></li>
+            <li><a href="#">Customer services</a></li>
+            <li><a href="#">Today's Deals</a></li>
+            <li><a href="#">Electronics</a></li>
+            <li>
+            <a href="#">Prime <i class="fa-solid fa-caret-down down"></i></a>
+            </li>
+            <li><a href="#">Amazon Pay</a></li>
+            <li><a href="#">fashion</a></li>
+            <li><a href="#">new releases</a></li>
+            <li><a href="#" class="im-logo"><img
+                    src="https://pbs.twimg.com/media/EvVj2r8UcAoQcgN?format=jpg&name=360x360"alt=""
+                class="logo-second-nav">Shopping Made easy | Donwload the app</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="product">
+        <img src="https://via.placeholder.com/150" alt="Product Image" />
+        <div class="product-info">
+          <h2>Product Title</h2>
+          <p>
+            Product description goes here. It's a great product that you will
+            love.
+          </p>
+          <p class="price">$19.99</p>
+          <a href="#" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://via.placeholder.com/150" alt="Product Image" />
+        <div class="product-info">
+          <h2>Product Title</h2>
+          <p>
+            Product description goes here. It's a great product that you will
+            love.
+          </p>
+          <p class="price">$29.99</p>
+          <a href="#" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://via.placeholder.com/150" alt="Product Image" />
+        <div class="product-info">
+          <h2>Product Title</h2>
+          <p>
+            Product description goes here. It's a great product that you will
+            love.
+          </p>
+          <p class="price">$39.99</p>
+          <a href="#" class="add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
